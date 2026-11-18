@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Image, Eye, X, Filter } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Image, Eye, X } from 'lucide-react';
 import { galleryItems } from '../data/schoolData';
 
 export default function Gallery() {
@@ -13,20 +13,27 @@ export default function Gallery() {
     return item.category === activeCategory;
   });
 
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setActiveImage(null);
+    };
+    if (activeImage) window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [activeImage]);
+
   return (
     <section id="gallery" className="section-py" style={{ background: '#ffffff' }}>
       <div className="container">
-        {/* Section Header */}
         <div className="section-header">
           <div className="section-badge">
             <Image size={15} />
-            <span>CAMPUS GLIMPSES</span>
+            <span>CAMPUS GALLERY</span>
           </div>
           <h2 className="section-title">
-            Explore Life at <span className="highlight">Al-Ameen Mission Academy</span>
+            Life at <span className="highlight">Al-Ameen Mission Academy</span>
           </h2>
           <p className="section-subtitle">
-            Authentic photographs of our serene Howly campus, well-equipped science laboratories, classrooms, and student activities.
+            Snapshots of our Howly campus, science labs, classrooms, and student achievements.
           </p>
         </div>
 
@@ -34,9 +41,9 @@ export default function Gallery() {
         <div style={{
           display: 'flex',
           justifyContent: 'center',
-          gap: '0.5rem',
+          gap: '0.45rem',
           flexWrap: 'wrap',
-          marginBottom: '2.5rem'
+          marginBottom: '2rem'
         }}>
           {categories.map((cat) => {
             const isActive = activeCategory === cat;
@@ -45,11 +52,10 @@ export default function Gallery() {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 style={{
-                  padding: '0.5rem 1.15rem',
+                  padding: '0.45rem 1rem',
                   borderRadius: '999px',
-                  fontSize: '0.85rem',
+                  fontSize: '0.82rem',
                   fontWeight: 600,
-                  transition: 'all 0.2s ease',
                   background: isActive ? '#0a192f' : '#f8fafc',
                   color: isActive ? '#fbbf24' : '#475569',
                   border: isActive ? '1px solid #0a192f' : '1px solid #e2e8f0'
@@ -62,15 +68,12 @@ export default function Gallery() {
         </div>
 
         {/* Gallery Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '1.5rem'
-        }}>
+        <div className="grid-3">
           {filteredItems.map((item, idx) => (
             <div
               key={idx}
               onClick={() => setActiveImage(item)}
+              className="gallery-card"
               style={{
                 borderRadius: '16px',
                 overflow: 'hidden',
@@ -78,14 +81,14 @@ export default function Gallery() {
                 border: '1px solid #e2e8f0',
                 boxShadow: 'var(--shadow-sm)',
                 cursor: 'pointer',
-                transition: 'all var(--transition-normal)'
+                transition: 'transform 0.25s ease, box-shadow 0.25s ease'
               }}
-              className="gallery-card"
             >
-              <div style={{ position: 'relative', height: '240px', overflow: 'hidden', background: '#0a192f' }}>
+              <div style={{ position: 'relative', height: '215px', overflow: 'hidden', background: '#0a192f' }}>
                 <img
                   src={item.image}
                   alt={item.title}
+                  loading="lazy"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -94,52 +97,53 @@ export default function Gallery() {
                   }}
                   className="gallery-img"
                 />
-                <div style={{
-                  position: 'absolute',
-                  inset: 0,
-                  background: 'rgba(10, 25, 47, 0.4)',
-                  opacity: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'opacity 0.25s ease'
-                }} className="gallery-overlay">
+                <div
+                  className="gallery-overlay"
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'rgba(10, 25, 47, 0.4)',
+                    opacity: 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    transition: 'opacity 0.25s ease'
+                  }}
+                >
                   <div style={{
-                    width: '46px',
-                    height: '46px',
+                    width: '42px',
+                    height: '42px',
                     borderRadius: '50%',
                     background: '#ffffff',
                     color: '#0a192f',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.3)'
+                    justifyContent: 'center'
                   }}>
-                    <Eye size={22} />
+                    <Eye size={20} />
                   </div>
                 </div>
 
                 <div style={{
                   position: 'absolute',
-                  top: '1rem',
-                  left: '1rem',
-                  background: 'rgba(10, 25, 47, 0.8)',
-                  backdropFilter: 'blur(8px)',
+                  top: '0.75rem',
+                  left: '0.75rem',
+                  background: 'rgba(10, 25, 47, 0.82)',
                   color: '#fbbf24',
-                  fontSize: '0.75rem',
+                  fontSize: '0.72rem',
                   fontWeight: 700,
-                  padding: '0.2rem 0.6rem',
+                  padding: '0.2rem 0.55rem',
                   borderRadius: '6px'
                 }}>
                   {item.category}
                 </div>
               </div>
 
-              <div style={{ padding: '1.25rem' }}>
-                <h4 style={{ fontSize: '1.05rem', fontWeight: 700, color: '#0f172a', marginBottom: '0.35rem' }}>
+              <div style={{ padding: '1rem 1.15rem' }}>
+                <h4 style={{ fontSize: '1rem', fontWeight: 700, color: '#0f172a', marginBottom: '0.2rem' }}>
                   {item.title}
                 </h4>
-                <p style={{ fontSize: '0.85rem', color: '#64748b', lineHeight: 1.5, margin: 0 }}>
+                <p style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.45, margin: 0 }}>
                   {item.desc}
                 </p>
               </div>
@@ -147,7 +151,7 @@ export default function Gallery() {
           ))}
         </div>
 
-        {/* Image Preview Lightbox Modal */}
+        {/* Lightbox Modal */}
         {activeImage && (
           <div
             onClick={() => setActiveImage(null)}
@@ -155,65 +159,64 @@ export default function Gallery() {
               position: 'fixed',
               inset: 0,
               backgroundColor: 'rgba(6, 18, 36, 0.9)',
-              backdropFilter: 'blur(10px)',
+              backdropFilter: 'blur(8px)',
               zIndex: 10000,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '1.5rem'
+              padding: '1rem'
             }}
           >
             <div
               onClick={(e) => e.stopPropagation()}
               style={{
-                maxWidth: '900px',
+                maxWidth: '860px',
                 width: '100%',
+                maxHeight: '92dvh',
+                overflowY: 'auto',
                 background: '#ffffff',
-                borderRadius: '20px',
-                overflow: 'hidden',
+                borderRadius: '18px',
                 boxShadow: '0 25px 60px rgba(0,0,0,0.5)',
                 position: 'relative'
               }}
             >
               <button
                 onClick={() => setActiveImage(null)}
+                aria-label="Close image preview"
                 style={{
                   position: 'absolute',
-                  top: '1rem',
-                  right: '1rem',
-                  width: '38px',
-                  height: '38px',
+                  top: '0.75rem',
+                  right: '0.75rem',
+                  width: '36px',
+                  height: '36px',
                   borderRadius: '50%',
-                  background: 'rgba(0,0,0,0.6)',
+                  background: 'rgba(0,0,0,0.65)',
                   color: '#ffffff',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  zIndex: 2,
-                  border: 'none'
+                  zIndex: 2
                 }}
               >
-                <X size={20} />
+                <X size={18} />
               </button>
 
-              <div style={{ maxHeight: '70vh', overflow: 'hidden', background: '#0a192f', display: 'flex', justifyContent: 'center' }}>
+              <div style={{ maxHeight: '68dvh', overflow: 'hidden', background: '#0a192f', display: 'flex', justifyContent: 'center' }}>
                 <img
                   src={activeImage.image}
                   alt={activeImage.title}
-                  style={{ maxHeight: '70vh', width: 'auto', maxWidth: '100%', objectFit: 'contain' }}
+                  style={{ maxHeight: '68dvh', width: 'auto', maxWidth: '100%', objectFit: 'contain' }}
                 />
               </div>
 
-              <div style={{ padding: '1.5rem', background: '#ffffff' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.35rem' }}>
-                  <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#059669', background: '#ecfdf5', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
-                    {activeImage.category}
-                  </span>
-                </div>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0a192f', marginBottom: '0.25rem' }}>
+              <div style={{ padding: '1.15rem 1.35rem', background: '#ffffff' }}>
+                <span style={{ fontSize: '0.72rem', fontWeight: 700, color: '#059669', background: '#ecfdf5', padding: '0.18rem 0.5rem', borderRadius: '4px' }}>
+                  {activeImage.category}
+                </span>
+                <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#0a192f', margin: '0.4rem 0 0.2rem' }}>
                   {activeImage.title}
                 </h3>
-                <p style={{ fontSize: '0.9rem', color: '#475569', margin: 0 }}>
+                <p style={{ fontSize: '0.86rem', color: '#475569', margin: 0 }}>
                   {activeImage.desc}
                 </p>
               </div>
@@ -224,7 +227,7 @@ export default function Gallery() {
 
       <style>{`
         .gallery-card:hover .gallery-img {
-          transform: scale(1.06);
+          transform: scale(1.05);
         }
         .gallery-card:hover .gallery-overlay {
           opacity: 1 !important;

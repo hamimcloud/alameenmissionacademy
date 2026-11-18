@@ -1,16 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  FileSpreadsheet, 
-  Send, 
-  CheckCircle, 
-  Sparkles, 
-  Phone, 
-  AlertCircle, 
-  Download, 
-  HelpCircle,
-  Clock,
-  ShieldCheck
-} from 'lucide-react';
+import { Send, CheckCircle, Sparkles, Phone, ShieldCheck } from 'lucide-react';
 import { schoolInfo } from '../data/schoolData';
 
 export default function AdmissionForm({ prefilledProgram }) {
@@ -18,14 +7,10 @@ export default function AdmissionForm({ prefilledProgram }) {
     studentName: '',
     guardianName: '',
     phone: '',
-    alternatePhone: '',
     email: '',
     stream: 'English Medium: Class XI - XII Science (CBSE/NEET)',
     boardingType: 'Hostel Required (Boys)',
-    previousClass: '',
-    previousMarks: '',
-    address: '',
-    notes: ''
+    address: ''
   });
 
   const [errors, setErrors] = useState({});
@@ -33,27 +18,27 @@ export default function AdmissionForm({ prefilledProgram }) {
   const [refId, setRefId] = useState('');
 
   useEffect(() => {
-    if (prefilledProgram) {
-      setFormData((prev) => ({
-        ...prev,
-        stream: prefilledProgram
-      }));
-    }
+    if (!prefilledProgram) return;
+    const programMap = {
+      'English Medium Stream': 'English Medium: Class XI - XII Science (CBSE/NEET)',
+      'Assamese Medium Stream': 'Assamese Medium: Class VI to X (Residential)',
+      'Mission 30 (M3 Elite Batch)': 'Mission 30 (NEET & JEE Super Batch)'
+    };
+    setFormData((prev) => ({
+      ...prev,
+      stream: programMap[prefilledProgram] || prefilledProgram
+    }));
   }, [prefilledProgram]);
 
   const validate = () => {
     const errs = {};
-    if (!formData.studentName.trim()) errs.studentName = "Student name is required";
-    if (!formData.guardianName.trim()) errs.guardianName = "Guardian name is required";
-    
-    // Validate phone
+    if (!formData.studentName.trim()) errs.studentName = 'Student name is required';
+    if (!formData.guardianName.trim()) errs.guardianName = 'Guardian name is required';
     const cleanPhone = formData.phone.replace(/[^0-9]/g, '');
     if (!cleanPhone || cleanPhone.length < 10) {
-      errs.phone = "Valid 10-digit phone number is required";
+      errs.phone = 'Valid 10-digit phone number is required';
     }
-
-    if (!formData.address.trim()) errs.address = "Address / Town is required";
-
+    if (!formData.address.trim()) errs.address = 'Address / Town is required';
     return errs;
   };
 
@@ -64,11 +49,8 @@ export default function AdmissionForm({ prefilledProgram }) {
       setErrors(validationErrors);
       return;
     }
-
     setErrors({});
-    // Generate a unique registration reference ID
-    const randomId = "AMA-" + Math.floor(100000 + Math.random() * 900000);
-    setRefId(randomId);
+    setRefId('AMA-' + Math.floor(100000 + Math.random() * 900000));
     setIsSubmitted(true);
   };
 
@@ -77,14 +59,10 @@ export default function AdmissionForm({ prefilledProgram }) {
       studentName: '',
       guardianName: '',
       phone: '',
-      alternatePhone: '',
       email: '',
       stream: 'English Medium: Class XI - XII Science (CBSE/NEET)',
       boardingType: 'Hostel Required (Boys)',
-      previousClass: '',
-      previousMarks: '',
-      address: '',
-      notes: ''
+      address: ''
     });
     setIsSubmitted(false);
   };
@@ -92,77 +70,59 @@ export default function AdmissionForm({ prefilledProgram }) {
   return (
     <section id="admissions" className="section-py" style={{ background: '#f8fafc' }}>
       <div className="container">
-        {/* Section Header */}
         <div className="section-header">
           <div className="section-badge gold">
             <Sparkles size={15} />
             <span>SESSION {schoolInfo.admissionSession}</span>
           </div>
           <h2 className="section-title">
-            Online <span className="highlight">Admission Inquiry</span> & Registration
+            Online <span className="highlight">Admission Inquiry</span>
           </h2>
           <p className="section-subtitle">
-            Secure your child's seat at Assam's leading residential academy. Applications are screened strictly on merit through our entrance examination and academic assessment.
+            Merit-based admission across English Medium, Assamese Medium, and Mission 30.
           </p>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '2.5rem',
-          alignItems: 'start'
-        }}>
-          {/* Left Column: Admission Guidelines & Help */}
-          <div>
-            <div style={{
+        <div className="grid-2" style={{ alignItems: 'start' }}>
+          {/* Left Column: Concise Steps & Scholarship */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <div className="admission-guide-card" style={{
               background: 'linear-gradient(135deg, #0a192f 0%, #153766 100%)',
               color: '#ffffff',
-              borderRadius: '24px',
-              padding: '2.25rem',
-              boxShadow: '0 20px 40px rgba(10, 25, 47, 0.15)',
-              marginBottom: '1.5rem'
+              borderRadius: '20px',
+              padding: '1.75rem',
+              boxShadow: '0 18px 36px rgba(10, 25, 47, 0.14)'
             }}>
               <span style={{
                 color: '#fbbf24',
-                fontSize: '0.8rem',
+                fontSize: '0.75rem',
                 fontWeight: 800,
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em',
                 display: 'block',
-                marginBottom: '0.5rem'
+                marginBottom: '0.35rem'
               }}>
-                Admission Roadmap
+                How It Works
               </span>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#ffffff', marginBottom: '1.25rem' }}>
-                How the Admission Process Works
+              <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#ffffff', marginBottom: '1.15rem' }}>
+                3-Step Admission Process
               </h3>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 {[
-                  {
-                    step: "1",
-                    title: "Submit Online Inquiry",
-                    desc: "Fill in the candidate and guardian details in this form or visit the academy office in Howly."
-                  },
-                  {
-                    step: "2",
-                    title: "Entrance Assessment",
-                    desc: "Shortlisted candidates appear for a merit test covering Mathematics, Science, and Language aptitude."
-                  },
-                  {
-                    step: "3",
-                    title: "Counseling & Hostel Allocation",
-                    desc: "Merit list publication, verification of past marksheets, and allocation of hostel rooms (Boys/Girls)."
-                  }
-                ].map((s, i) => (
-                  <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                  { step: '1', title: 'Submit Inquiry', desc: 'Fill in student and guardian details online or at our Howly office.' },
+                  { step: '2', title: 'Entrance Test', desc: 'Appear for our merit test in Maths, Science, and Language.' },
+                  { step: '3', title: 'Enrollment & Hostel', desc: 'Merit selection, document verification, and hostel allocation.' }
+                ].map((s) => (
+                  <div key={s.step} style={{ display: 'flex', gap: '0.85rem', alignItems: 'flex-start' }}>
                     <div style={{
-                      width: '32px',
-                      height: '32px',
+                      width: '28px',
+                      height: '28px',
                       borderRadius: '50%',
                       background: '#f59e0b',
                       color: '#061224',
                       fontWeight: 900,
+                      fontSize: '0.85rem',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -171,64 +131,57 @@ export default function AdmissionForm({ prefilledProgram }) {
                       {s.step}
                     </div>
                     <div>
-                      <div style={{ fontWeight: 700, fontSize: '0.95rem', color: '#ffffff' }}>{s.title}</div>
-                      <div style={{ fontSize: '0.825rem', color: '#cbd5e1' }}>{s.desc}</div>
+                      <div style={{ fontWeight: 700, fontSize: '0.92rem', color: '#ffffff' }}>{s.title}</div>
+                      <div style={{ fontSize: '0.82rem', color: '#cbd5e1' }}>{s.desc}</div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Special Scholarship Banner */}
             <div style={{
               background: '#ecfdf5',
               border: '1px solid rgba(16, 185, 129, 0.3)',
               borderRadius: '16px',
-              padding: '1.5rem',
+              padding: '1.25rem',
               display: 'flex',
-              gap: '1rem',
+              gap: '0.85rem',
               alignItems: 'flex-start'
             }}>
-              <ShieldCheck size={26} color="#059669" style={{ flexShrink: 0 }} />
+              <ShieldCheck size={22} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
               <div>
-                <h4 style={{ fontSize: '1rem', fontWeight: 800, color: '#065f46', margin: '0 0 0.25rem 0' }}>
-                  Special Provision for Poor Meritorious Students
+                <h4 style={{ fontSize: '0.95rem', fontWeight: 800, color: '#065f46', margin: '0 0 0.2rem 0' }}>
+                  Scholarships for Meritorious Students
                 </h4>
-                <p style={{ fontSize: '0.85rem', color: '#047857', margin: 0, lineHeight: 1.5 }}>
-                  Financial constraints will never obstruct true merit. Special fee waivers and sponsorship quotas are available upon document verification.
+                <p style={{ fontSize: '0.82rem', color: '#047857', margin: 0, lineHeight: 1.5 }}>
+                  Special fee concessions are available for talented students from financially weaker backgrounds.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right Column: The Form */}
-          <div style={{
-            background: '#ffffff',
-            borderRadius: '24px',
-            border: '1px solid #e2e8f0',
-            boxShadow: 'var(--shadow-lg)',
-            padding: '2.5rem'
-          }}>
+          {/* Right Column: Form */}
+          <div className="card-modern admission-form-card" style={{ padding: '2rem' }}>
             {isSubmitted ? (
-              <div style={{ textAlign: 'center', padding: '2rem 1rem' }}>
+              <div style={{ textAlign: 'center', padding: '1.5rem 0.5rem' }}>
                 <div style={{
-                  width: '64px',
-                  height: '64px',
+                  width: '58px',
+                  height: '58px',
                   borderRadius: '50%',
                   background: '#ecfdf5',
                   color: '#059669',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  margin: '0 auto 1.25rem auto'
+                  margin: '0 auto 1rem auto'
                 }}>
-                  <CheckCircle size={36} />
+                  <CheckCircle size={32} />
                 </div>
-                <h3 style={{ fontSize: '1.65rem', fontWeight: 800, color: '#0a192f', marginBottom: '0.5rem' }}>
-                  Inquiry Submitted Successfully!
+                <h3 style={{ fontSize: '1.45rem', fontWeight: 800, color: '#0a192f', marginBottom: '0.4rem' }}>
+                  Inquiry Submitted!
                 </h3>
-                <p style={{ color: '#475569', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1.5rem' }}>
-                  Thank you for applying. Your registration reference number is:
+                <p style={{ color: '#475569', fontSize: '0.9rem', marginBottom: '1.1rem' }}>
+                  Your registration reference number:
                 </p>
                 <div style={{
                   display: 'inline-block',
@@ -236,155 +189,108 @@ export default function AdmissionForm({ prefilledProgram }) {
                   border: '2px dashed #059669',
                   color: '#059669',
                   fontWeight: 900,
-                  fontSize: '1.35rem',
-                  padding: '0.6rem 1.5rem',
-                  borderRadius: '12px',
-                  marginBottom: '1.5rem',
+                  fontSize: '1.25rem',
+                  padding: '0.5rem 1.25rem',
+                  borderRadius: '10px',
+                  marginBottom: '1.25rem',
                   fontFamily: 'monospace'
                 }}>
                   {refId}
                 </div>
-                <p style={{ fontSize: '0.875rem', color: '#64748b', marginBottom: '2rem' }}>
-                  Our admission office will contact you on <strong>{formData.phone}</strong> shortly to guide you regarding the entrance schedule and syllabus.
+                <p style={{ fontSize: '0.84rem', color: '#64748b', marginBottom: '1.5rem' }}>
+                  We will contact you on <strong>{formData.phone}</strong> regarding the entrance test schedule.
                 </p>
 
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                  <button onClick={resetForm} className="btn btn-secondary">
-                    Submit Another Application
+                <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  <button onClick={resetForm} className="btn btn-secondary btn-sm">
+                    Submit Another
                   </button>
-                  <a href={`tel:${schoolInfo.primaryPhone}`} className="btn btn-primary">
-                    <Phone size={16} />
-                    <span>Call Admission Desk</span>
+                  <a href={`tel:${schoolInfo.primaryPhone}`} className="btn btn-primary btn-sm">
+                    <Phone size={15} />
+                    <span>Call Office</span>
                   </a>
                 </div>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
-                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: '#0a192f', marginBottom: '1.5rem' }}>
-                  Candidate Admission Form
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0a192f', marginBottom: '1.25rem' }}>
+                  Candidate Registration Form
                 </h3>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem', marginBottom: '1.25rem' }}>
+                <div className="grid-form-2" style={{ marginBottom: '1rem' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#334155', marginBottom: '0.35rem' }}>
-                      Student Full Name *
-                    </label>
+                    <label className="form-label">Student Full Name *</label>
                     <input
                       type="text"
                       value={formData.studentName}
                       onChange={(e) => setFormData({ ...formData, studentName: e.target.value })}
-                      placeholder="Enter student's full name"
-                      style={{
-                        width: '100%',
-                        padding: '0.75rem 1rem',
-                        borderRadius: '10px',
-                        border: errors.studentName ? '1px solid #ef4444' : '1px solid #cbd5e1',
-                        fontSize: '0.9rem',
-                        outline: 'none'
-                      }}
+                      placeholder="Student's full name"
+                      className="form-input"
+                      style={{ borderColor: errors.studentName ? '#ef4444' : undefined }}
                     />
-                    {errors.studentName && <span style={{ fontSize: '0.75rem', color: '#ef4444' }}>{errors.studentName}</span>}
+                    {errors.studentName && <span style={{ fontSize: '0.74rem', color: '#ef4444' }}>{errors.studentName}</span>}
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#334155', marginBottom: '0.35rem' }}>
-                      Father / Guardian Name *
-                    </label>
+                    <label className="form-label">Father / Guardian Name *</label>
                     <input
                       type="text"
                       value={formData.guardianName}
                       onChange={(e) => setFormData({ ...formData, guardianName: e.target.value })}
-                      placeholder="Enter parent/guardian name"
-                      style={{
-                        width: '100%',
-                        padding: '0.75rem 1rem',
-                        borderRadius: '10px',
-                        border: errors.guardianName ? '1px solid #ef4444' : '1px solid #cbd5e1',
-                        fontSize: '0.9rem',
-                        outline: 'none'
-                      }}
+                      placeholder="Parent/guardian name"
+                      className="form-input"
+                      style={{ borderColor: errors.guardianName ? '#ef4444' : undefined }}
                     />
-                    {errors.guardianName && <span style={{ fontSize: '0.75rem', color: '#ef4444' }}>{errors.guardianName}</span>}
+                    {errors.guardianName && <span style={{ fontSize: '0.74rem', color: '#ef4444' }}>{errors.guardianName}</span>}
                   </div>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem', marginBottom: '1.25rem' }}>
+                <div className="grid-form-2" style={{ marginBottom: '1rem' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#334155', marginBottom: '0.35rem' }}>
-                      Mobile Phone Number *
-                    </label>
+                    <label className="form-label">Mobile Number *</label>
                     <input
                       type="tel"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      placeholder="e.g. 9876543210"
-                      style={{
-                        width: '100%',
-                        padding: '0.75rem 1rem',
-                        borderRadius: '10px',
-                        border: errors.phone ? '1px solid #ef4444' : '1px solid #cbd5e1',
-                        fontSize: '0.9rem',
-                        outline: 'none'
-                      }}
+                      placeholder="10-digit mobile number"
+                      className="form-input"
+                      style={{ borderColor: errors.phone ? '#ef4444' : undefined }}
                     />
-                    {errors.phone && <span style={{ fontSize: '0.75rem', color: '#ef4444' }}>{errors.phone}</span>}
+                    {errors.phone && <span style={{ fontSize: '0.74rem', color: '#ef4444' }}>{errors.phone}</span>}
                   </div>
 
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#334155', marginBottom: '0.35rem' }}>
-                      Email Address (Optional)
-                    </label>
+                    <label className="form-label">Email (Optional)</label>
                     <input
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      placeholder="e.g. candidate@gmail.com"
-                      style={{
-                        width: '100%',
-                        padding: '0.75rem 1rem',
-                        borderRadius: '10px',
-                        border: '1px solid #cbd5e1',
-                        fontSize: '0.9rem',
-                        outline: 'none'
-                      }}
+                      placeholder="candidate@gmail.com"
+                      className="form-input"
                     />
                   </div>
                 </div>
 
-                {/* Desired Stream / Program Selection */}
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#334155', marginBottom: '0.35rem' }}>
-                    Select Course & Academic Stream *
-                  </label>
+                <div style={{ marginBottom: '1rem' }}>
+                  <label className="form-label">Course & Stream *</label>
                   <select
                     value={formData.stream}
                     onChange={(e) => setFormData({ ...formData, stream: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '10px',
-                      border: '1px solid #cbd5e1',
-                      fontSize: '0.9rem',
-                      outline: 'none',
-                      background: '#ffffff'
-                    }}
+                    className="form-input"
                   >
                     <option value="English Medium: Nursery to KG">English Medium: Nursery to KG</option>
                     <option value="English Medium: Class I to V">English Medium: Class I to V</option>
                     <option value="English Medium: Class VI to X">English Medium: Class VI to X (CBSE Pattern)</option>
-                    <option value="English Medium: Class XI - XII Science (CBSE/NEET)">English Medium: Class XI - XII Science (CBSE Pattern / NEET)</option>
-                    <option value="Assamese Medium: Class VI to X (Residential)">Assamese Medium: Class VI to X (Separate Residential Campus)</option>
+                    <option value="English Medium: Class XI - XII Science (CBSE/NEET)">English Medium: Class XI - XII Science (CBSE / NEET)</option>
+                    <option value="Assamese Medium: Class VI to X (Residential)">Assamese Medium: Class VI to X (Residential)</option>
                     <option value="Assamese Medium: Class XI - XII Science (Residential)">Assamese Medium: Class XI - XII Science (Residential)</option>
-                    <option value="Mission 30 (NEET & JEE Super Batch)">Mission 30 (NEET & JEE Super Batch - Complete Residential)</option>
+                    <option value="Mission 30 (NEET & JEE Super Batch)">Mission 30 (NEET & JEE Super Batch)</option>
                   </select>
                 </div>
 
-                {/* Residential Preference */}
-                <div style={{ marginBottom: '1.25rem' }}>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#334155', marginBottom: '0.35rem' }}>
-                    Accommodation Preference *
-                  </label>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.75rem' }}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <label className="form-label">Accommodation *</label>
+                  <div className="grid-form-3">
                     {[
                       'Hostel Required (Boys)',
                       'Hostel Required (Girls)',
@@ -395,9 +301,9 @@ export default function AdmissionForm({ prefilledProgram }) {
                         key={opt}
                         onClick={() => setFormData({ ...formData, boardingType: opt })}
                         style={{
-                          padding: '0.65rem 0.5rem',
+                          padding: '0.6rem 0.5rem',
                           borderRadius: '8px',
-                          fontSize: '0.8rem',
+                          fontSize: '0.78rem',
                           fontWeight: formData.boardingType === opt ? 700 : 500,
                           background: formData.boardingType === opt ? '#0f274a' : '#f8fafc',
                           color: formData.boardingType === opt ? '#fbbf24' : '#475569',
@@ -410,27 +316,17 @@ export default function AdmissionForm({ prefilledProgram }) {
                   </div>
                 </div>
 
-                {/* Address & Town */}
-                <div style={{ marginBottom: '1.5rem' }}>
-                  <label style={{ display: 'block', fontSize: '0.85rem', fontWeight: 700, color: '#334155', marginBottom: '0.35rem' }}>
-                    Full Residential Address / District *
-                  </label>
+                <div style={{ marginBottom: '1.25rem' }}>
+                  <label className="form-label">Residential Address / District *</label>
                   <textarea
                     rows={2}
                     value={formData.address}
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                    placeholder="Village/Town, District, Assam, PIN Code"
-                    style={{
-                      width: '100%',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '10px',
-                      border: errors.address ? '1px solid #ef4444' : '1px solid #cbd5e1',
-                      fontSize: '0.9rem',
-                      outline: 'none',
-                      fontFamily: 'inherit'
-                    }}
+                    placeholder="Village/Town, District, Assam, PIN"
+                    className="form-input"
+                    style={{ borderColor: errors.address ? '#ef4444' : undefined }}
                   />
-                  {errors.address && <span style={{ fontSize: '0.75rem', color: '#ef4444' }}>{errors.address}</span>}
+                  {errors.address && <span style={{ fontSize: '0.74rem', color: '#ef4444' }}>{errors.address}</span>}
                 </div>
 
                 <button
@@ -438,14 +334,23 @@ export default function AdmissionForm({ prefilledProgram }) {
                   className="btn btn-primary btn-lg"
                   style={{ width: '100%', borderRadius: '12px' }}
                 >
-                  <Send size={18} />
-                  <span>Submit Admission Registration</span>
+                  <Send size={17} />
+                  <span>Submit Registration</span>
                 </button>
               </form>
             )}
           </div>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .admission-guide-card,
+          .admission-form-card {
+            padding: 1.25rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

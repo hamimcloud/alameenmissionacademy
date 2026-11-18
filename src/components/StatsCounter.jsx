@@ -1,61 +1,55 @@
 import React from 'react';
-import { Award, Users, BookOpen, Clock, ShieldCheck, HeartHandshake, PhoneCall } from 'lucide-react';
-import { statsData, schoolInfo } from '../data/schoolData';
+import { Award, Users, BookOpen, Clock } from 'lucide-react';
+import { statsData } from '../data/schoolData';
 
 export default function StatsCounter() {
   const icons = [Clock, Award, BookOpen, Users];
 
   return (
-    <section style={{
-      background: '#ffffff',
-      borderBottom: '1px solid #e2e8f0',
+    <section className="stats-section" style={{
+      background: '#f8fafc',
       position: 'relative',
-      marginTop: '-2rem',
       zIndex: 10
     }}>
       <div className="container">
-        {/* Main Stats Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))',
-          gap: '1.25rem',
+        <div className="grid-4 stats-box" style={{
           background: '#ffffff',
-          borderRadius: '20px',
-          padding: '1.75rem',
-          boxShadow: '0 20px 40px -10px rgba(10, 25, 47, 0.08)',
+          borderRadius: '18px',
+          padding: '1.25rem',
+          boxShadow: '0 16px 35px -10px rgba(10, 25, 47, 0.08)',
           border: '1px solid #e2e8f0'
         }}>
           {statsData.map((stat, index) => {
             const Icon = icons[index % icons.length];
             return (
-              <div 
+              <div
                 key={index}
                 style={{
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '1rem',
-                  padding: '1rem',
-                  borderRadius: '14px',
+                  gap: '0.9rem',
+                  padding: '0.85rem',
+                  borderRadius: '12px',
                   background: '#f8fafc',
                   border: '1px solid #f1f5f9'
                 }}
               >
                 <div style={{
-                  width: '52px',
-                  height: '52px',
-                  borderRadius: '14px',
-                  background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.05) 100%)',
-                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  width: '46px',
+                  height: '46px',
+                  borderRadius: '12px',
+                  background: 'rgba(16, 185, 129, 0.1)',
+                  border: '1px solid rgba(16, 185, 129, 0.25)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   flexShrink: 0
                 }}>
-                  <Icon size={26} color="#059669" />
+                  <Icon size={22} color="#059669" />
                 </div>
-                <div>
+                <div style={{ minWidth: 0 }}>
                   <div style={{
-                    fontSize: '1.85rem',
+                    fontSize: '1.65rem',
                     fontWeight: 900,
                     color: '#0a192f',
                     lineHeight: 1,
@@ -63,10 +57,10 @@ export default function StatsCounter() {
                   }}>
                     {stat.value}
                   </div>
-                  <div style={{ fontSize: '0.875rem', fontWeight: 700, color: '#334155', marginTop: '0.25rem' }}>
+                  <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#334155', marginTop: '0.2rem' }}>
                     {stat.label}
                   </div>
-                  <div style={{ fontSize: '0.75rem', color: '#64748b' }}>
+                  <div style={{ fontSize: '0.74rem', color: '#64748b' }}>
                     {stat.desc}
                   </div>
                 </div>
@@ -74,33 +68,24 @@ export default function StatsCounter() {
             );
           })}
         </div>
-
-        {/* Quick Official Notice Ribbon */}
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: '1rem',
-          padding: '1.25rem 0',
-          fontSize: '0.875rem',
-          color: '#475569'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
-            <ShieldCheck size={18} color="#059669" />
-            <span>
-              Recognized Institution • <strong>HS/Darpan Code:</strong> {schoolInfo.darpanCode} • <strong>UDISE:</strong> {schoolInfo.udiseCode}
-            </span>
-          </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
-            <PhoneCall size={18} color="#f59e0b" />
-            <span>
-              Admission Helplines: <a href={`tel:${schoolInfo.primaryPhone}`} style={{ fontWeight: 700, color: '#0a192f' }}>{schoolInfo.primaryPhone}</a> / <a href={`tel:${schoolInfo.secondaryPhone}`} style={{ fontWeight: 700, color: '#0a192f' }}>{schoolInfo.secondaryPhone}</a>
-            </span>
-          </div>
-        </div>
       </div>
+
+      <style>{`
+        .stats-section {
+          margin-top: -2.25rem;
+          padding-bottom: 1rem;
+        }
+        @media (max-width: 768px) {
+          .stats-section {
+            margin-top: 0;
+            padding-top: 1.5rem;
+            padding-bottom: 0;
+          }
+          .stats-box {
+            padding: 1rem !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

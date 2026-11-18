@@ -6,125 +6,82 @@ export const schoolInfo = {
   established: "2014",
   darpanCode: "025469",
   udiseCode: "18050206014",
-  address: "Ward No. 1, Howly Town, Howli, Barpeta District, Assam, India - 781316",
+  address: "Ward No. 1, Howly Town, Howli, Barpeta, Assam - 781316",
   phones: ["+91 60007 02701", "+91 96134 40210"],
   primaryPhone: "+91 60007 02701",
   secondaryPhone: "+91 96134 40210",
   email: "sfassam@gmail.com",
   loginUrl: "http://alameenmissionacademy.in/authentication",
   whatsappNumber: "916000702701",
-  workingHours: "Monday - Saturday: 8:00 AM - 5:00 PM",
   admissionSession: "2026 - 2027"
 };
 
 export const statsData = [
-  { label: "Years of Educational Legacy", value: "10+", suffix: "Years", desc: "Serving students since 2014" },
-  { label: "Medical & NEET Selections", value: "25+", suffix: "Students", desc: "Admitted into GMCH, AMCH, FAAMCH" },
-  { label: "H.S. & Board Pass Rate", value: "100%", suffix: "Success", desc: "Top distinctions every year" },
-  { label: "Dedicated Subject Mentors", value: "15+", suffix: "Faculty", desc: "Experienced NEET/JEE & Board specialists" }
-];
-
-export const keyRules = [
-  {
-    title: "Strictly Merit-Based Admissions",
-    desc: "Admission to all academic streams and residential batches is determined by fair merit, entrance test, and academic record.",
-    icon: "Award"
-  },
-  {
-    title: "Zero Gadget & Phone Policy",
-    desc: "Mobile phones, tablets, and electronic entertainment devices are strictly prohibited on campus and hostels to protect student focus.",
-    icon: "SmartphoneOff"
-  },
-  {
-    title: "Support for Meritorious & Needy",
-    desc: "Special financial aid, fee concessions, and scholarships are provided to talented underprivileged students so talent is never held back.",
-    icon: "HeartHandshake"
-  },
-  {
-    title: "Separate Residential Campuses",
-    desc: "Dedicated and independent hostels for Boys and Girls with in-campus dining, 24/7 warden supervision, and quiet study halls.",
-    icon: "Home"
-  },
-  {
-    title: "100% Tobacco-Free & Disciplined",
-    desc: "A completely clean, moral, spiritual, and disciplined atmosphere nurturing character along with academic brilliance.",
-    icon: "ShieldCheck"
-  },
-  {
-    title: "Integrated Competitive Coaching",
-    desc: "Daily doubt clearance sessions, NCERT mastery, and full-length NEET & JEE mock test series built into regular schooling hours.",
-    icon: "BookOpenCheck"
-  }
+  { label: "Years of Legacy", value: "10+", desc: "Established in 2014" },
+  { label: "Medical Selections", value: "25+", desc: "GMCH, AMCH, FAAMCH" },
+  { label: "Board Pass Rate", value: "100%", desc: "Consistent distinctions" },
+  { label: "Subject Mentors", value: "15+", desc: "NEET/JEE & Board faculty" }
 ];
 
 export const programsData = [
   {
     id: "english-medium",
     title: "English Medium Stream",
-    subtitle: "Nursery to Class X & XI - XII (Science)",
-    badge: "CBSE Pattern / NCERT Syllabus",
-    tag: "Day Boarding & Residential",
-    description: "Holistic English-medium schooling from foundational kindergarten through senior secondary Class XII Science. Follows comprehensive NCERT curriculum with seamless integration into competitive medical & engineering entrance prep.",
+    subtitle: "Nursery to Class XII (Science)",
+    badge: "CBSE Pattern • NCERT",
+    description: "English-medium schooling from Nursery to Class XII Science with integrated NEET & JEE preparation.",
     highlights: [
-      "Foundational nursery & primary activity-based learning",
-      "CBSE pattern NCERT curriculum taught by specialized teachers",
-      "Class XI - XII Science with intensive NEET & JEE coaching",
-      "Modern science and computer laboratories for practical insight",
-      "Regular assessments, progress tracking, and parent counseling"
+      "NCERT curriculum from foundational classes to Class XII",
+      "Integrated NEET & JEE coaching for Class XI–XII Science",
+      "Modern Physics, Chemistry, Biology & Computer labs"
     ],
-    classes: "Nursery, KG, I - X, and XI - XII (Science)"
+    classes: "Nursery – Class XII (Science)"
   },
   {
     id: "assamese-medium",
     title: "Assamese Medium Stream",
-    subtitle: "Class VI to Class X & XI - XII (Science)",
-    badge: "Complete Residential Campus",
-    tag: "State Board + Competitive",
-    description: "A specialized, fully residential campus for Assamese medium students providing exemplary board preparation alongside competitive entrance coaching for Higher Secondary Science.",
+    subtitle: "Class VI to Class XII (Science)",
+    badge: "Residential Campus",
+    description: "Dedicated residential campus for Assamese medium students combining SEBA/AHSEC excellence with entrance coaching.",
     highlights: [
-      "Separate dedicated residential campus with serene study atmosphere",
-      "Class VI to X SEBA preparation with rigorous academic foundation",
-      "Class XI & XII Science stream with NEET and JEE guidance",
-      "Personalized mentoring and compulsory supervised evening study hours",
-      "Consistent track record of Star Marks and District Top Ranks"
+      "Separate serene residential campus for focused study",
+      "Class VI–X SEBA & XI–XII Science with NEET/JEE guidance",
+      "Compulsory supervised evening study & mentoring"
     ],
-    classes: "Class VI to Class X & XI - XII (Science)"
+    classes: "Class VI – Class XII (Science)"
   },
   {
     id: "mission-30",
     title: "Mission 30 (M3 Elite Batch)",
-    subtitle: "Targeted NEET & JEE Residential Coaching",
-    badge: "Specialized Super-Batch",
-    tag: "High Yield Results",
-    description: "An elite batch modeled after proven super-30 pedagogical frameworks. Handpicked meritorious aspirants undergo high-intensity, structured medical and engineering coaching with round-the-clock mentorship.",
+    subtitle: "Targeted NEET & JEE Coaching",
+    badge: "Flagship Super-Batch",
+    description: "High-intensity residential coaching for meritorious aspirants with 720-mark mock tests and round-the-clock mentorship.",
     highlights: [
-      "Rigorous full-length Practice Tests (720 Marks) & Short Practice Tests (190 Marks)",
-      "Dedicated subject specialists in Physics, Chemistry, Zoology, and Botany",
-      "Complete residential environment with zero digital distractions",
-      "Daily problem-solving practice (DPPs) & individual error analysis",
-      "Direct pathway to premier Medical Colleges (GMCH, FAAMCH, NMCH, etc.)"
+      "720-mark NTA pattern full tests & 190-mark sprint tests",
+      "Daily practice problems (DPPs) & personal error analysis",
+      "Zero-gadget residential discipline with specialist faculty"
     ],
-    classes: "XI - XII Science Aspirants & 1-Year Dropper / Repeater Batch"
+    classes: "Class XI–XII & 1-Year Repeater Batch"
   }
 ];
 
 export const achieversData = {
   medicalCollege: [
-    { name: "Dr. Lokman Hikim", college: "PRCA, Gauhati Medical College (GMCH)", category: "Doctor / PG", score: "Doctoral Alumnus" },
+    { name: "Dr. Lokman Hikim", college: "Gauhati Medical College (GMCH)", category: "Doctor / PG", score: "Alumnus" },
     { name: "Dr. Osman Ali", college: "Dental College Silchar (BDS)", category: "Doctor", score: "BDS Alumnus" },
-    { name: "Sanowar Rahman / Hussain", college: "Silchar Medical College & Hospital (SMCH)", category: "2nd Year MBBS", score: "NEET 646" },
-    { name: "Mokibul Hussain", college: "Fakhruddin Ali Ahmed Medical College (FAAMCH)", category: "2nd Year MBBS", score: "NEET 631" },
-    { name: "Azmina Khatun", college: "Kokrajhar Medical College & Hospital (KMCH)", category: "1st Year MBBS", score: "NEET 606" },
-    { name: "B. Meherun Nessa", college: "Gauhati Medical College & Hospital (GMCH)", category: "1st Year MBBS", score: "NEET 602" },
+    { name: "Sanowar Rahman / Hussain", college: "Silchar Medical College (SMCH)", category: "2nd Year MBBS", score: "NEET 646" },
+    { name: "Mokibul Hussain", college: "FAAMCH, Barpeta", category: "2nd Year MBBS", score: "NEET 631" },
+    { name: "Azmina Khatun", college: "Kokrajhar Medical College (KMCH)", category: "1st Year MBBS", score: "NEET 606" },
+    { name: "B. Meherun Nessa", college: "Gauhati Medical College (GMCH)", category: "1st Year MBBS", score: "NEET 602" },
     { name: "Ashek Billal", college: "Assam Govt Medical College", category: "MBBS Entrant", score: "NEET 592" },
-    { name: "Mousumi Ahmed", college: "Nagaon Medical College & Hospital (NMCH)", category: "1st Year MBBS", score: "NEET 588" },
+    { name: "Mousumi Ahmed", college: "Nagaon Medical College (NMCH)", category: "1st Year MBBS", score: "NEET 588" },
     { name: "Fatema Khatun", college: "Assam Govt Medical College", category: "MBBS Entrant", score: "NEET 579" },
     { name: "Jannatul Ferduse", college: "Assam Govt Medical College", category: "MBBS Entrant", score: "NEET 566" },
-    { name: "Omar Faruk", college: "Fakhruddin Ali Ahmed Medical College (FAAMCH)", category: "1st Year MBBS", score: "MBBS Selection" },
-    { name: "Manowar Hussain", college: "Nagaon Medical College & Hospital (NMCH)", category: "1st Year MBBS", score: "MBBS Selection" },
-    { name: "Rejuwana Alom", college: "Fakhruddin Ali Ahmed Medical College (FAAMCH)", category: "3rd Year MBBS", score: "MBBS Alumna" },
-    { name: "Idrish Ali", college: "Gauhati Medical College & Hospital (GMCH)", category: "4th Year MBBS", score: "MBBS Alumnus" },
-    { name: "Motior Rahman", college: "Assam Medical College & Hospital (AMCH)", category: "4th Year MBBS", score: "MBBS Alumnus" }
+    { name: "Omar Faruk", college: "FAAMCH, Barpeta", category: "1st Year MBBS", score: "MBBS" },
+    { name: "Manowar Hussain", college: "Nagaon Medical College (NMCH)", category: "1st Year MBBS", score: "MBBS" },
+    { name: "Rejuwana Alom", college: "FAAMCH, Barpeta", category: "3rd Year MBBS", score: "MBBS" },
+    { name: "Idrish Ali", college: "Gauhati Medical College (GMCH)", category: "4th Year MBBS", score: "MBBS" },
+    { name: "Motior Rahman", college: "Assam Medical College (AMCH)", category: "4th Year MBBS", score: "MBBS" }
   ],
   boardResultsHS: [
     { name: "Selima Aktara", percentage: "88.4%", badge: "Distinction", details: "Chem: 95, Maths: 96, Phy: 90, MIL: 86" },
@@ -158,231 +115,176 @@ export const facultyData = [
     designation: "Principal",
     qualification: "M.A, Dip. Mass Com.",
     experience: "Ex-Navy",
-    department: "Administration & Leadership",
-    image: "/images/faculty-poster-1.jpg"
+    department: "Administration"
   },
   {
     name: "Zadid Hussain",
     designation: "Faculty Member",
     qualification: "M.Sc, B.Ed.",
-    experience: "3+ Years Teaching Experience",
-    department: "Chemistry Department"
+    experience: "3+ Years Experience",
+    department: "Chemistry"
   },
   {
     name: "Sabur Uddin",
     designation: "Faculty Member",
     qualification: "M.Sc",
-    experience: "3+ Years Teaching Experience",
-    department: "Chemistry Department"
+    experience: "3+ Years Experience",
+    department: "Chemistry"
   },
   {
     name: "Bishal Kakoti",
     designation: "NEET & JEE Faculty",
     qualification: "B.Tech",
-    experience: "Entrance Examination Specialist",
-    department: "Chemistry & Competitive Prep"
+    experience: "Entrance Specialist",
+    department: "Chemistry"
   },
   {
     name: "Kuladeep Seal",
     designation: "NEET & JEE Faculty",
     qualification: "M.Sc",
-    experience: "Advanced Conceptual Mentor",
-    department: "Chemistry Department"
+    experience: "Conceptual Mentor",
+    department: "Chemistry"
   },
   {
     name: "Shahidul Islam",
     designation: "Senior Faculty",
     qualification: "M.Sc (Botany), B.Ed.",
-    experience: "7+ Years Teaching Experience",
-    department: "Biology Department"
+    experience: "7+ Years Experience",
+    department: "Biology"
   },
   {
     name: "Md Mohtaseem",
-    designation: "NEET Specialist Faculty",
+    designation: "NEET Specialist",
     qualification: "M.Sc (Zoology)",
-    experience: "Medical Entrance Mentor",
-    department: "Biology Department"
+    experience: "Medical Mentor",
+    department: "Biology"
   },
   {
     name: "Mofida Khatun",
     designation: "Senior Faculty",
     qualification: "M.Sc (Zoology), B.Ed.",
-    experience: "7+ Years Teaching Experience",
-    department: "Biology Department"
+    experience: "7+ Years Experience",
+    department: "Biology"
   },
   {
     name: "Dipankar Talukdar",
-    designation: "NEET Specialist Faculty",
+    designation: "NEET Specialist",
     qualification: "M.Sc (Zoology)",
-    experience: "Zoological & Medical Specialist",
-    department: "Biology Department"
+    experience: "Medical Specialist",
+    department: "Biology"
   },
   {
     name: "Saif Rahman",
     designation: "Faculty Member",
     qualification: "M.Sc, B.Ed.",
-    experience: "4+ Years Teaching Experience",
-    department: "Physics Department"
+    experience: "4+ Years Experience",
+    department: "Physics"
   },
   {
     name: "Mukunda Madhab Dutta",
     designation: "NEET & JEE Faculty",
     qualification: "B.Tech (M.E.)",
-    experience: "Physics & Applied Mechanics",
-    department: "Physics Department"
+    experience: "Applied Mechanics",
+    department: "Physics"
   },
   {
     name: "Nurul Amin",
     designation: "Faculty Member",
     qualification: "M.Sc, B.Ed.",
-    experience: "3+ Years Teaching Experience",
-    department: "Mathematics Department"
+    experience: "3+ Years Experience",
+    department: "Mathematics"
   },
   {
     name: "Mahindar Purbey",
-    designation: "JEE Specialist Faculty",
+    designation: "JEE Specialist",
     qualification: "M.Sc",
-    experience: "Advanced Mathematics Mentor",
-    department: "Mathematics Department"
+    experience: "Advanced Maths Mentor",
+    department: "Mathematics"
   },
   {
     name: "Md. Sohrab Ali",
     designation: "Senior Faculty",
-    qualification: "M.A (English), B.Ed (G.U.)",
-    experience: "7+ Years Teaching Experience",
-    department: "English Department"
+    qualification: "M.A (English), B.Ed",
+    experience: "7+ Years Experience",
+    department: "English"
   },
   {
     name: "Rehena Parbin",
     designation: "Senior Faculty",
     qualification: "M.A (Assamese)",
-    experience: "7+ Years Teaching Experience",
-    department: "Assamese Department"
+    experience: "7+ Years Experience",
+    department: "Assamese"
   }
 ];
 
 export const facilitiesData = [
   {
     title: "Separate Boys & Girls Hostels",
-    description: "Safe, disciplined, and strictly separated hostel buildings inside the secure campus boundary with round-the-clock wardens, hygiene superintendents, and structured routine.",
+    description: "Secure, independent hostel buildings with 24/7 wardens and structured daily routines.",
     icon: "Home"
   },
   {
-    title: "Science Practical Laboratories",
-    description: "Well-equipped modern Physics, Chemistry, and Biology laboratories enabling hands-on experimental demonstrations aligned with CBSE, NCERT, and State Board standards.",
+    title: "Science Laboratories",
+    description: "Modern Physics, Chemistry, and Biology labs aligned with CBSE and State Board standards.",
     icon: "FlaskConical"
   },
   {
-    title: "Distraction-Free Environment",
-    description: "Strict prohibition of smartphones and electronic entertainment devices guarantees undisturbed mental tranquility and optimal academic concentration.",
+    title: "Zero-Gadget Campus",
+    description: "Strict prohibition of smartphones and tobacco ensures a focused, distraction-free atmosphere.",
     icon: "ShieldAlert"
   },
   {
-    title: "Nutritious & Hygienic Food",
-    description: "In-house mess serving balanced, hygienic, and wholesome meals prepared under strict sanitary guidelines to maintain peak physical and cognitive health.",
+    title: "Hygienic Mess & Dining",
+    description: "Balanced, nutritious meals prepared daily in our clean, supervised in-house kitchen.",
     icon: "Utensils"
   },
   {
-    title: "Supervised Evening Study Halls",
-    description: "Compulsory scheduled self-study hours in quiet study halls under the direct supervision of resident teachers and faculty proctors.",
+    title: "Supervised Study Halls",
+    description: "Compulsory evening self-study sessions monitored directly by resident faculty proctors.",
     icon: "Library"
   },
   {
-    title: "Spiritual, Moral & Character Growth",
-    description: "Imparting time-tested values of honesty, dedication, diligence, respect, and communal harmony alongside modern contemporary education.",
+    title: "Moral & Character Growth",
+    description: "Nurturing honesty, diligence, and leadership alongside contemporary academic excellence.",
     icon: "Compass"
   }
 ];
 
 export const galleryItems = [
   {
-    title: "Academic Campus Entrance & Grounds",
+    title: "Academic Campus & Grounds",
     category: "Campus",
     image: "/images/campus-hero.jpg",
-    desc: "Scenic, lush green view of the main academy boulevard and academic block in Howly."
+    desc: "Main academic block and green campus boulevard in Howly."
   },
   {
-    title: "Campus Main Gate & Boundary",
+    title: "Main Gate & Boundary",
     category: "Campus",
     image: "/images/admission-gate.jpg",
-    desc: "Secured main gate of Al-Ameen Mission Academy, Howly."
+    desc: "Secured entrance of Al-Ameen Mission Academy."
   },
   {
-    title: "Science Practical Laboratories",
+    title: "Science Practical Labs",
     category: "Facilities",
     image: "/images/faculty-science-neet.jpg",
-    desc: "High school science students conducting biology and chemistry experiments under faculty guidance."
+    desc: "Students conducting experiments under faculty supervision."
   },
   {
     title: "Classrooms & Morning Assembly",
     category: "Campus Life",
     image: "/images/campus-facilities-poster.jpg",
-    desc: "Spacious classrooms, disciplined morning assembly, and separate boys & girls hostel facilities."
+    desc: "Disciplined morning assembly and spacious classrooms."
   },
   {
-    title: "Mission 30 NEET Entrance Coaching",
+    title: "Mission 30 NEET Coaching",
     category: "Academics",
     image: "/images/mission30-neet.jpg",
-    desc: "Intensive preparation batches, mock exams, and medical college achievers."
+    desc: "Intensive NEET preparation batches and mock test sessions."
   },
   {
-    title: "H.S. Science Distinction Wall of Fame",
+    title: "H.S. Science Wall of Fame",
     category: "Achievements",
     image: "/images/hs-results-2024.jpg",
-    desc: "Celebration of our stellar performance in Higher Secondary Science board examinations."
-  }
-];
-
-export const noticesList = [
-  {
-    date: "Latest Update",
-    title: "Admissions Open for Session 2026 - 2027",
-    category: "Admissions",
-    text: "Applications invited for Nursery to Class XII Science (English Medium) & Class VI to XII Science (Assamese Medium). Entrance tests scheduled every weekend."
-  },
-  {
-    date: "Important Notice",
-    title: "Mission 30 (M3) NEET 2027 Registration Open",
-    category: "Coaching",
-    text: "Registrations currently open for targeted residential NEET & JEE guidance. Limited to meritorious qualifying applicants."
-  },
-  {
-    date: "Campus Portal",
-    title: "Student & Staff Authentication ERP Active",
-    category: "Portal",
-    text: "Students, teachers, and guardians can securely log in via the official authentication portal to view attendance, reports, and circulars."
-  },
-  {
-    date: "Advisory",
-    title: "Zero Electronic Gadgets Reminder",
-    category: "Discipline",
-    text: "Boarders and day scholars must not carry cellphones or entertainment devices. Campus is strictly 100% tobacco-free."
-  }
-];
-
-export const faqList = [
-  {
-    question: "What are the mediums of instruction at Al-Ameen Mission Academy?",
-    answer: "We offer two dedicated streams: English Medium from Nursery to Class XII (Science) under the CBSE/NCERT pattern, and Assamese Medium from Class VI to Class XII (Science) on a dedicated residential campus."
-  },
-  {
-    question: "What is 'Mission 30' (M3 Batch)?",
-    answer: "Mission 30 is our flagship residential medical/engineering coaching batch. Meritorious students receive specialized coaching for NEET and JEE with rigorous daily problem solving, 720-mark mock tests, and faculty mentorship."
-  },
-  {
-    question: "Are hostel facilities available for both boys and girls?",
-    answer: "Yes. We provide completely separate, safe, and guarded residential hostel complexes for boys and girls inside the campus, with in-house mess and round-the-clock wardens."
-  },
-  {
-    question: "How can students and staff log into the school portal?",
-    answer: "You can click on the 'Portal Login' button on this website or visit the official authentication URL: http://alameenmissionacademy.in/authentication with your registered student/faculty ID and password."
-  },
-  {
-    question: "Is there any financial aid or scholarship for poor students?",
-    answer: "Yes, our mission includes a special provision for poor, meritorious students to ensure quality education is accessible regardless of financial circumstances."
-  },
-  {
-    question: "How do I apply for admission?",
-    answer: "You can fill out the online admission inquiry form directly on this website, call our office at +91 60007 02701 / 96134 40210, or visit our campus at Ward No.1, Howly Town, Howli, Assam."
+    desc: "Celebrating our Higher Secondary Science board toppers."
   }
 ];
